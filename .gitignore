@@ -5,4 +5,4 @@ ffmpeg.exe
 build/
 dist/
 TwitchTTSBuild/
-start.spec
+TwitchChatTTS.spec
