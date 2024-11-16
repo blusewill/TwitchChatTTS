@@ -21,7 +21,7 @@ TARGET_CHANNEL = config["TARGET_CHANNEL"]
 USER_SCOPE = [AuthScope.CHAT_READ, AuthScope.CHAT_EDIT]
 Language = config["Language"]
 Speed = config["Speed"]
-Ignored_User = config.get("Ignored_User", [])
+Ignored_User = config["Ignored_User"]
 ffmpeg_command = [f"{PWD}\\ffmpeg.exe", "-y", "-i", "temp.mp3", "-filter:a", f"atempo={Speed}", "TTS.mp3"]
 
 async def play_tts(text: str):
