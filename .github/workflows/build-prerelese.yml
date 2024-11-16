@@ -38,15 +38,25 @@ jobs:
     - name: Create zip file
       run: |
         cd dist
-        choco install 7zip -y
-        7z a TwitchChatTTS.zip TwitchChatTTS.exe ffmpeg.exe example-config.json
-
-    - name: Upload to GitHub Pre-release
-      if: github.event_name == 'release'
-      uses: actions/upload-release-asset@v1
+        Compress-Archive -Path TwitchChatTTS.exe, ffmpeg.exe, example-config.json -DestinationPath TwitchChatTTS.zip
+    
+    - name: Github Pre-release
+      uses: CupOfTea696/gh-action-auto-release@v1.0.0
       with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: dist/TwitchChatTTS.zip
+          title: "Pre-Release: $version"
+          tag: "v$semver"
+          draft: false
+          regex: "/^Pre-Release: #{prerelease}$/i"
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: TwitchChatTTS.zip
         asset_name: TwitchChatTTS.zip
-        asset_content_type: application/zip
+        tag: ${{ github.ref }}
+        overwrite: false
+        body: "Pre-Release of The TwitchChatTTS"
 
