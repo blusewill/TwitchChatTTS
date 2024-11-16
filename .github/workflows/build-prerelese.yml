@@ -39,7 +39,7 @@ jobs:
       run: |
         cd dist
         choco install 7zip -y
-        7z a TwitchChatTTS.zip *
+        7z a TwitchChatTTS.zip TwitchChatTTS.exe ffmpeg.exe example-config.json
 
     - name: Upload to GitHub Pre-release
       uses: actions/upload-release-asset@v1
