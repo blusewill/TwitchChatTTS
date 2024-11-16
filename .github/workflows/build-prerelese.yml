@@ -33,8 +33,7 @@ jobs:
 
     - name: Copy additional files
       run: |
-        if exist example-config.json (
-          copy example-config.json dist/
+        copy example-config.json dist/
 
     - name: Create zip file
       run: |
