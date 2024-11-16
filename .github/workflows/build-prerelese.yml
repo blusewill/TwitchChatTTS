@@ -39,7 +39,8 @@ jobs:
     - name: Create zip file
       run: |
         cd dist
-        powershell Compress-Archive -Path _internal\*,TwitchChatTTS.exe,example-config.json,ffmpeg.exe -DestinationPath TwitchChatTTS.zip
+        choco install 7zip -y
+        7z a TwitchChatTTS.zip _internal\* TwitchChatTTS.exe example-config.json ffmpeg.exe
 
     - name: Upload to GitHub Pre-release
       uses: actions/upload-release-asset@v1
