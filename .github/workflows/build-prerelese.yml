@@ -42,6 +42,7 @@ jobs:
         7z a TwitchChatTTS.zip TwitchChatTTS.exe ffmpeg.exe example-config.json
 
     - name: Upload to GitHub Pre-release
+      if: github.event_name == 'release'
       uses: actions/upload-release-asset@v1
       with:
         upload_url: ${{ github.event.release.upload_url }}
