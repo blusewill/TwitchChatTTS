@@ -67,17 +67,25 @@ Click on Authrize! and the bot should be greeting you for using the Bot!
     "TARGET_CHANNEL": "blusewill",
     "Language": "zh-TW",
     "Speed": "1.2"
+    "Ignored_user": ["Nightbot", "Moobot", "StreamElements", "Streamlabs", "Fossabot"]
 ```
 
 `TARGET_CHANNEL`
+
 The Channel you're going to join to read the Chat
 
 `Language`
+
 The language you're going to use for TTS
 
 Check the [gTTS Documentation](https://gtts.readthedocs.io/en/latest/module.html#languages-gtts-lang) for the language you can currently use
 
 `Speed`
+
 The TTS Talking Speed.
 
 Note : Require [ffmpeg](https://ffmpeg.org) to work
+
+`Ignored_user`
+
+The user that is going to be ignored in TTS function.
