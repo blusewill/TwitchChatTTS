@@ -17,6 +17,7 @@ Open the current folder in terminal and create a virtual enviroment.
 And Source the virtualenviroment
 
 Windows :  `.\.virtualenv\Scripts\Activate.ps1`
+
 Linux : `source ./.virtualenv/bin/acitvate`
 
 And install the requirement for the application to run
@@ -73,8 +74,10 @@ The Channel you're going to join to read the Chat
 
 `Language`
 The language you're going to use for TTS
+
 Check the [gTTS Documentation](https://gtts.readthedocs.io/en/latest/module.html#languages-gtts-lang) for the language you can currently use
 
 `Speed`
 The TTS Talking Speed.
+
 Note : Require [ffmpeg](https://ffmpeg.org) to work
