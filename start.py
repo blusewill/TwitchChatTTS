@@ -23,7 +23,6 @@ Language = config["Language"]
 Speed = config["Speed"]
 Ignored_User = config.get("Ignored_User", [])
 ffmpeg_command = [f"{PWD}\\ffmpeg.exe", "-y", "-i", "temp.mp3", "-filter:a", f"atempo={Speed}", "TTS.mp3"]
-print("忽略的使用者清單：", Ignored_User) 
 
 async def play_tts(text: str):
     tts = gTTS(text, lang=Language)
