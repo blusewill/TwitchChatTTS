@@ -1,0 +1,8 @@
+.virtualenv
+.env
+config.json
+ffmpeg.exe
+build/
+dist/
+TwitchTTSBuild/
+start.spec
