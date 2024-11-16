@@ -55,7 +55,7 @@ http://localhost:17563
 
 以啟用 Twitch 認證功能。
 
-註冊完成後，將應用程式的 **Client ID** 與 **Client Secret** 貼到 `example-config.json` 中：
+註冊完成後，將應用程式的 **Client ID** 與 **Client Secret** 貼到 `config.json` 中：
 
 ```
     "APP_ID": "Client ID here",

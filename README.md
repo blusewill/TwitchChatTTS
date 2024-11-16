@@ -48,7 +48,7 @@ But the redirect URLs Must set to
 
 To make the Twitch authenticator working.
 
-After Register the Application Paste the Client ID and Client Secret into example-conifg.json
+After Register the Application Paste the Client ID and Client Secret into conifg.json
 
 ```
     "APP_ID": "Client ID here",
