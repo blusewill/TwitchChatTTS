@@ -35,9 +35,6 @@ jobs:
       run: |
         if exist example-config.json (
           copy example-config.json dist/
-        ) else (
-          echo example-config.json not found, skipping copy.
-        )
 
     - name: Create zip file
       run: |
