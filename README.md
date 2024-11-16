@@ -1,6 +1,6 @@
 # TwitchChatTTS
 
-[English](README.md) [繁體中文](README.md)
+[English](README.md) [繁體中文](README-zh-tw.md)
 
 ![TwitchChatTTSLogo](Photo/Twitch%20Chat%20TTS%20Logo.png)
 
