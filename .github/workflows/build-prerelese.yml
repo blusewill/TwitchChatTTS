@@ -39,7 +39,7 @@ jobs:
       run: |
         cd dist
         choco install 7zip -y
-        7z a TwitchChatTTS.zip dist\*
+        7z a TwitchChatTTS.zip *
 
     - name: Upload to GitHub Pre-release
       uses: actions/upload-release-asset@v1
