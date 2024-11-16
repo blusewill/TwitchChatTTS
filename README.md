@@ -1,5 +1,7 @@
 # TwitchChatTTS
 
+[English](README.md) [繁體中文](README.md)
+
 ![TwitchChatTTSLogo](Photo/Twitch%20Chat%20TTS%20Logo.png)
 
 Using pyTwitchAPI and gTTS to transcript Twitch Chat Messages.
