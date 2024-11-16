@@ -3,5 +3,6 @@
     "APP_SECRET": "",
     "TARGET_CHANNEL": "blusewill",
     "Language": "zh-TW",
-    "Speed": "1"
+    "Speed": "1",
+    "Ignored_user":  ["Nightbot", "Moobot", "StreamElements", "Streamlabs", "Fossabot"]
 }

@@ -21,7 +21,9 @@ TARGET_CHANNEL = config["TARGET_CHANNEL"]
 USER_SCOPE = [AuthScope.CHAT_READ, AuthScope.CHAT_EDIT]
 Language = config["Language"]
 Speed = config["Speed"]
+Ignored_User = config.get("Ignored_User", [])
 ffmpeg_command = [f"{PWD}\\ffmpeg.exe", "-y", "-i", "temp.mp3", "-filter:a", f"atempo={Speed}", "TTS.mp3"]
+print("忽略的使用者清單：", Ignored_User) 
 
 async def play_tts(text: str):
     tts = gTTS(text, lang=Language)
@@ -53,6 +55,10 @@ async def on_ready(ready_event: EventData):
     time.sleep(0.5)
 
 async def on_message(msg: ChatMessage):
+    if msg.user.name in Ignored_User:
+        return
+    elif msg.user.display_name in Ignored_User:
+        return
     if Language == "zh-TW":
         print(f'{msg.user.display_name} 說了 {msg.text}')
     else:
@@ -80,6 +86,7 @@ async def on_message(msg: ChatMessage):
         else:
             await play_tts(f'{msg.user.name} - {filtered_msg}')
             return
+
     if 'http' in msg.text:
         if Language == "zh-TW":
             filtered_msg = ' '.join('連接看一下' if word.startswith('http') else word for word in msg.text.split())
