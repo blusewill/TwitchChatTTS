@@ -11,9 +11,13 @@ import asyncio
 import subprocess
 
 PWD = os.getcwd()
+if os.name == "nt":
+    with open(f'{PWD}\\config.json', 'r') as config_file:
+        config = json.load(config_file)
+else:
+    with open(f'{PWD}/config.json', 'r') as config_file:
+        config = json.load(config_file)
 
-with open(f'{PWD}\\config.json', 'r') as config_file:
-    config = json.load(config_file)
 
 APP_ID = config["APP_ID"]
 APP_SECRET = config["APP_SECRET"]
@@ -22,7 +26,12 @@ USER_SCOPE = [AuthScope.CHAT_READ, AuthScope.CHAT_EDIT]
 Language = config["Language"]
 Speed = config["Speed"]
 Ignored_User = config["Ignored_User"]
-ffmpeg_command = [f"{PWD}\\ffmpeg.exe", "-y", "-i", "temp.mp3", "-filter:a", f"atempo={Speed}", "TTS.mp3"]
+
+if os.name == "nt":
+    ffmpeg_command = [f"{PWD}\\ffmpeg.exe", "-y", "-i", "temp.mp3", "-filter:a", f"atempo={Speed}", "TTS.mp3"]
+else:
+    ffmpeg_command = [f"ffmpeg", "-y", "-i", "temp.mp3", "-filter:a", f"atempo={Speed}", "TTS.mp3"]
+
 
 async def play_tts(text: str):
     tts = gTTS(text, lang=Language)
@@ -44,9 +53,9 @@ async def on_ready(ready_event: EventData):
         print(f'機器人已經在線上了！加入 {TARGET_CHANNEL} 的圖奇！')
     else:
         print(f"Bot is Currently Online! Joining {TARGET_CHANNEL}'s Twitch Channel.")
-    
+
     await ready_event.chat.join_room(TARGET_CHANNEL)
-    
+
     if Language == "zh-TW":
         await play_tts(f'{TARGET_CHANNEL} 安安，現在開始為你檢測聊天室訊息')
     else:
