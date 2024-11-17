@@ -18,7 +18,7 @@ jobs:
       - name: Python Linter
         uses: sunnysid3up/python-linter@master
         with:
-          source: "src"
+          source: "start.py"
           mypy-options: "--ignore-missing-imports --show-error-codes"
           pylint-options: "--rcfile=pylint.cfg"
           isort-options: "-w 100"
