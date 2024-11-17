@@ -85,7 +85,7 @@ async def on_message(msg: ChatMessage):
         for start, end in sorted(ranges_to_remove, reverse=True):
             filtered_msg = filtered_msg[:start] + ' ' + filtered_msg[end:]
             filtered_msg = ' '.join(filtered_msg.split())
-    
+
         if filtered_msg.lower() == '':
             return
         elif Language == "zh-TW":
@@ -104,7 +104,7 @@ async def on_message(msg: ChatMessage):
             await play_tts(f'{msg.user.display_name} - {filtered_msg}')
         else:
             await play_tts(f'{msg.user.name} - {filtered_msg}')
-    
+
     elif "!" in msg.text:
         return
     else:
