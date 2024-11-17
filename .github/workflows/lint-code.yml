@@ -28,4 +28,6 @@ jobs:
         uses: super-linter/super-linter@v7.1.0 # x-release-please-version
         env:
           # To report GitHub Actions status checks
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_PYTHON: true 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
