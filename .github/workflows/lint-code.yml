@@ -22,3 +22,4 @@ jobs:
           mypy-options: "--ignore-missing-imports --show-error-codes"
           pylint-options: "--rcfile=pylint.cfg"
           isort-options: "-w 100"
+          strict: "low"
