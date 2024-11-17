@@ -1,5 +1,7 @@
 # TwitchChatTTS
 
+[![Super-Linter](https://github.com/blusewill/TwitchChatTTS/actions/workflows/lint-code.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
+
 [English](README.md) [繁體中文](README-zh-tw.md)
 
 ![TwitchChatTTSLogo](Photo/Twitch%20Chat%20TTS%20Logo.png)
