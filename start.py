@@ -142,6 +142,7 @@ async def on_message(msg: ChatMessage):
 
     await asyncio.sleep(1)
 
+
 async def on_message_no_username(msg: ChatMessage):
     if msg.user.name in Ignored_User:
         return
