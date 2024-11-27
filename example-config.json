@@ -4,5 +4,6 @@
     "TARGET_CHANNEL": "blusewill",
     "Language": "zh-TW",
     "Speed": "1",
-    "Ignored_user": ["Nightbot", "Moobot", "StreamElements", "Streamlabs", "Fossabot"]
+    "Ignored_user": ["Nightbot", "Moobot", "StreamElements", "Streamlabs", "Fossabot"],
+    "TTS_Username": "true"
 }

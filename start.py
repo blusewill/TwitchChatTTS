@@ -26,6 +26,7 @@ USER_SCOPE = [AuthScope.CHAT_READ, AuthScope.CHAT_EDIT]
 Language = config["Language"]
 Speed = config["Speed"]
 Ignored_User = config["Ignored_User"]
+Speak_Username = config["TTS_Username"]
 
 if os.name == "nt":
     ffmpeg_command = [
@@ -141,6 +142,65 @@ async def on_message(msg: ChatMessage):
 
     await asyncio.sleep(1)
 
+async def on_message_no_username(msg: ChatMessage):
+    if msg.user.name in Ignored_User:
+        return
+    elif msg.user.display_name in Ignored_User:
+        return
+    if Language == "zh-TW":
+        print(f"{msg.user.display_name} 說了 {msg.text}")
+    else:
+        print(f"{msg.user.name} - {msg.text}")
+    filtered_msg = msg.text
+    check_emotes = msg.emotes
+    if check_emotes:  # This checks if check_emotes is not None or empty
+        ranges_to_remove = []
+        for emote_key in msg.emotes:
+            if isinstance(msg.emotes[emote_key], list):
+                for emote in msg.emotes[emote_key]:
+                    start = int(emote["start_position"])
+                    end = int(emote["end_position"]) + 1
+                    ranges_to_remove.append((start, end))
+
+        for start, end in sorted(ranges_to_remove, reverse=True):
+            filtered_msg = filtered_msg[:start] + " " + filtered_msg[end:]
+            filtered_msg = " ".join(filtered_msg.split())
+
+        if filtered_msg.lower() == "":
+            return
+        elif Language == "zh-TW":
+            await play_tts(f"{filtered_msg}")
+            return
+        else:
+            await play_tts(f"{filtered_msg}")
+            return
+
+    if "http" in msg.text:
+        if Language == "zh-TW":
+            filtered_msg = " ".join(
+                "連接看一下" if word.startswith("http") else word
+                for word in msg.text.split()
+            )
+        else:
+            filtered_msg = " ".join(
+                "Please Check the link." if word.startswith("http") else word
+                for word in msg.text.split()
+            )
+        if Language == "zh-TW":
+            await play_tts(f"{filtered_msg}")
+        else:
+            await play_tts(f"{filtered_msg}")
+
+    elif "!" in msg.text:
+        return
+    else:
+        if Language == "zh-TW":
+            await play_tts(f"{filtered_msg}")
+        else:
+            await play_tts(f"{filtered_msg}")
+
+    await asyncio.sleep(1)
+
 
 async def run():
     twitch = await Twitch(APP_ID, APP_SECRET)
@@ -151,7 +211,10 @@ async def run():
     chat = await Chat(twitch)
 
     chat.register_event(ChatEvent.READY, on_ready)
-    chat.register_event(ChatEvent.MESSAGE, on_message)
+    if Speak_Username.lower() == "true":
+        chat.register_event(ChatEvent.MESSAGE, on_message)
+    else:
+        chat.register_event(ChatEvent.MESSAGE, on_message_no_username)
 
     chat.start()
 

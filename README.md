@@ -71,7 +71,8 @@ Click on Authrize! and the bot should be greeting you for using the Bot!
     "TARGET_CHANNEL": "blusewill",
     "Language": "zh-TW",
     "Speed": "1.2"
-    "Ignored_user": ["Nightbot", "Moobot", "StreamElements", "Streamlabs", "Fossabot"]
+    "Ignored_user": ["Nightbot", "Moobot", "StreamElements", "Streamlabs", "Fossabot"],
+    "TTS_Username": "true"
 ```
 
 `TARGET_CHANNEL`
@@ -93,3 +94,7 @@ Note : Require [ffmpeg](https://ffmpeg.org) to work
 `Ignored_user`
 
 The user that is going to be ignored in TTS function.
+
+`TTS_Username`
+
+Whether read out the Username or not. Option: `true` or `false`

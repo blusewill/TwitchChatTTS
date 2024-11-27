@@ -76,7 +76,8 @@ http://localhost:17563
     "TARGET_CHANNEL": "blusewill",
     "Language": "zh-TW",
     "Speed": "1.2",
-    "Ignored_user": ["Nightbot", "Moobot", "StreamElements", "Streamlabs", "Fossabot"]
+    "Ignored_user": ["Nightbot", "Moobot", "StreamElements", "Streamlabs", "Fossabot"],
+    "TTS_Username": "true"
 ```
 
 - **`TARGET_CHANNEL`**  
@@ -92,3 +93,6 @@ http://localhost:17563
 
 - **`Ignored_user`**  
   指定不會啟用 TTS 功能的使用者清單。
+
+  **`TTS_Username`**
+  朗讀使用者名稱 設定 `true` 或 `false`
