@@ -25,7 +25,7 @@ TARGET_CHANNEL = config["TARGET_CHANNEL"]
 USER_SCOPE = [AuthScope.CHAT_READ, AuthScope.CHAT_EDIT]
 Language = config["Language"]
 Speed = config["Speed"]
-Ignored_User = config["Ignored_User"]
+Ignored_User = config["Ignored_user"]
 Speak_Username = config["TTS_Username"]
 
 if os.name == "nt":
